@@ -19,7 +19,8 @@
     </div>
 <% end %>
 
-
+  <%= f.label :status, "ステータス" %>
+  <%= f.select :status, ["A", "B", "C"] %>
 
   <%= f.label :content, "タスク" %>
   <%= f.text_field :content %>
