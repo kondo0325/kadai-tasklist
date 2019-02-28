@@ -1,28 +1,40 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
 
 
 
+    <%=form_for(task) do |f| %>
+    
+      <!-- ERROR MESSAGE -->
+      <% if task.errors.any? %>
+        <!--<div id="error_explanation">-->
+        <div class = "alert alert-warning">
+          <ul>
+            <% task.errors.full_messages.each do |message| %>
+              <li>
+                <%= message %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      
+      <!-- FORM -->
+    
+      <div class = "form-group">
+        <%= f.label :status, "ステータス" %>
+        <%= f.select :status, ["A", "B", "C"], class: "form-control" %>   
+      </div>
+    
+      <div class = "form-group">
+        <%= f.label :content, "タスク" %>
+        <%= f.text_field :content, class: "form-control" %>
+      </div>
+        <%= f.submit "作成" , class: "btn btn-primary"%>
 
-<%=form_for(task) do |f| %>
+      
+    <% end %>
 
-
-
-
-<% if task.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-<% task.errors.full_messages.each do |message| %>
-          <li>
-<%= message %>
-</li>
-<% end %>
-      </ul>
-    </div>
-<% end %>
-
-  <%= f.label :status, "ステータス" %>
-  <%= f.select :status, ["A", "B", "C"] %>
-
-  <%= f.label :content, "タスク" %>
-  <%= f.text_field :content %>
-  <%= f.submit "作成" %>
-<% end %>
+  </div>
+</div>
